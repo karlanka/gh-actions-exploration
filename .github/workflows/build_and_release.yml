@@ -30,7 +30,8 @@ jobs:
       matrix:
         company: ${{ fromJSON(needs.changes.outputs.companies) }}
     runs-on: ubuntu-latest
-    environment: prod_${{ matrix.company }}
+    environment:
+      name: prod_${{ matrix.company }}
 
     steps:
       - name: publish
