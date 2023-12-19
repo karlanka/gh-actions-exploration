@@ -21,8 +21,10 @@ jobs:
         id: filter
         with:
           filters: |
-            - "dummy1/**"
-            - "dummy2/**"
+            dummy1:
+              - 'dummy1/**'
+            dummy2:
+              - 'dummy2/**'
 
   build:
     needs: changes
@@ -30,7 +32,8 @@ jobs:
       matrix:
         company: ${{ fromJSON(needs.changes.outputs.companies) }}
     runs-on: ubuntu-latest
-    environment: prod_${{ matrix.company }}
+    environment:
+      name: prod_${{ matrix.company }}
 
     steps:
       - name: publish
