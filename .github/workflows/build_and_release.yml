@@ -21,8 +21,10 @@ jobs:
         id: filter
         with:
           filters: |
-            - "dummy1/**"
-            - "dummy2/**"
+            dummy1:
+              - 'dummy1/**'
+            dummy2:
+              - 'dummy2/**'
 
   build:
     needs: changes
