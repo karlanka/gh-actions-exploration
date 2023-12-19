@@ -37,4 +37,4 @@ jobs:
 
     steps:
       - name: publish
-        run: echo The username is ${{ matrix.company }}
+        run: echo The username is ${{ matrix.company }} for ${{ github.sha }}
