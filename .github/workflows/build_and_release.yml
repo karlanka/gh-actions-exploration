@@ -34,6 +34,7 @@ jobs:
     runs-on: ubuntu-latest
     environment:
       name: prod_${{ matrix.company }}
+    name: Build and release ${{ matrix.company }}
 
     steps:
       - name: publish
