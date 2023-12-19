@@ -1,0 +1,37 @@
+name: Build & Push to Production
+
+on:
+  push:
+    branches:
+      - "main"
+    paths:
+      - "dummy1/**"
+      - "dummy2/**"
+
+jobs:
+  changes:
+    runs-on: ubuntu-latest
+    outputs:
+      companies: ${{ steps.filter.outputs.changes }}
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v3
+      - name: Paths filtering
+        uses: dorny/paths-filter@v2
+        id: filter
+        with:
+          filters: |
+            - "dummy1/**"
+            - "dummy2/**"
+
+  build:
+    needs: changes
+    strategy:
+      matrix:
+        company: ${{ fromJSON(needs.changes.outputs.companies) }}
+    runs-on: ubuntu-latest
+    environment: prod_${{ matrix.company }}
+
+    steps:
+      - name: publish
+        run: echo The username is ${{ matrix.company }}
