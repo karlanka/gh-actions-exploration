@@ -14,3 +14,12 @@ jobs:
     steps:
       - name: Print the input name to STDOUT
         run: echo The username is ${{ inputs.username }}
+
+  publish:
+    needs: [print-username]
+    runs-on: ubuntu-latest
+    environment: prod_${{ inputs.username }}
+
+    steps:
+      - name: publish
+        run: echo The username is ${{ inputs.username }}
