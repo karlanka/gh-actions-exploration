@@ -17,6 +17,7 @@ jobs:
           git branch $BRANCH_NAME
           git checkout $BRANCH_NAME
           touch new_file.txt
+          echo $BRANCH_NAME > new_file.txt
           git config user.name github-actions
           git config user.email github-actions@github.com
           git add .
