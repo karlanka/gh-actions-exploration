@@ -1,9 +1,6 @@
 name: Build & Push to Production
 
-on:
-  push:
-    branches:
-      - "main"
+on: workflow_dispatch
 
 jobs:
   changes:
