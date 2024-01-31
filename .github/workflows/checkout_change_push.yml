@@ -13,7 +13,7 @@ jobs:
         uses: actions/checkout@v3
       - name: git stuff
         run: |
-          git branch temp-branch
+          git -b release-branch-$(uuidgen)
           touch new_file.txt
           git config user.name github-actions
           git config user.email github-actions@github.com
